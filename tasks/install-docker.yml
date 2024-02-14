@@ -19,13 +19,13 @@
       - containerd.io
     state: present
 
+- name: docker python
+  pip:
+    name: docker-py
+    executable: pip2.7
+    
 - name: Enable and start docker
   service:
     name: docker
     state: started
     enabled: yes
-
-- name: docker python
-  pip:
-    name: docker-py
-    executable: pip2.7
