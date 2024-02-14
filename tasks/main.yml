@@ -11,6 +11,6 @@
     name: webapp
     image: httpd
     ports:
-      - "{{ web_app_port }}:{{ apache_port }}"
+      - "{{ webapp_port }}:{{ apache_port }}"
     volumes:
       - "/home/{{ system_user }}/index.html:/usr/local/apache2/htdocs/index.html"
