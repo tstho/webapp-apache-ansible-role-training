@@ -1,0 +1,31 @@
+---
+- name: add Docker repository
+  yum_repository:
+    name: docker
+    description: docker
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+    enabled: yes 
+
+- name: add Docker GPG Key
+  rpm_key:
+    key: https://download.docker.com/linux/centos/gpg
+    state: present
+
+- name: Install Docker engine
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: Enable and start docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: docker python
+  pip:
+    name: docker-py
+    executable: pip2.7
